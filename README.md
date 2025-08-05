@@ -18,7 +18,7 @@ A full-stack tour booking application built with **Node.js**, **Express**, **Mon
 ## 🛠 Tech Stack
 
 - **Backend**: Node.js, Express, MongoDB, Mongoose
-- **Frontend**: Pug, Parcel bundler, Vanilla JS
+- **Frontend**: Pug, Parcel bundler
 - **Security**: Helmet, express-mongo-sanitize, xss-clean, rate-limit, hpp
 
 ---
