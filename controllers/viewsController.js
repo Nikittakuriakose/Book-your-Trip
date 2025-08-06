@@ -37,6 +37,12 @@ exports.getTour = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getSignupForm = (req, res) => {
+  res.status(200).render('signup', {
+    title: 'Sign up',
+  });
+};
+
 exports.getLoginForm = (req, res) => {
   res.status(200).render('login', {
     title: 'Log into your account',
@@ -49,19 +55,19 @@ exports.getAccount = (req, res) => {
   });
 };
 
-exports.getMyTours=catchAsync(async(req,res,next)=>{
+exports.getMyTours = catchAsync(async (req, res, next) => {
   // find all bookings
-  const bookings=await Booking.find({user:req.user.id})
+  const bookings = await Booking.find({ user: req.user.id });
 
   //find tours with returned IDs
-  const tourIDs=bookings.map(el=>el.tour)
-  const tours=await Tour.find({_id:{$in:tourIDs}})
+  const tourIDs = bookings.map((el) => el.tour);
+  const tours = await Tour.find({ _id: { $in: tourIDs } });
 
-  res.status(200).render('overview',{
-    title:'My Tours',
-    tours
-  })
-})
+  res.status(200).render('overview', {
+    title: 'My Tours',
+    tours,
+  });
+});
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(
@@ -78,7 +84,6 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
 
   res.status(200).render('account', {
     title: 'Your account',
-    user:updatedUser
+    user: updatedUser,
   });
-
 });
